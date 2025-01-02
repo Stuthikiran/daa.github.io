@@ -1,81 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DAA Lab Reflections</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DAA Lab Reflections</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Back to Portfolio</a></li>
-            </ul>
-        </nav>
-        <h1>DAA Lab Reflections</h1>
-    </header>
+  <header>
+    <nav>
+      <ul>
+        <li>
+          <a href="index.html">Back to Portfolio</a>
+        </li>
+      </ul>
+    </nav>
+    <h1>DAA Lab Reflections</h1>
+  </header>
+  <main>
+    <div class="section">
+      <h2>1. Time Complexity Analysis</h2>
+      <h3>Algorithm:</h3>
+      <pre>
+void analyzeComplexity(int n) {
+    for (int i = 0; i &lt; n; i++) {  // O(n)
+        for (int j = 0; j &lt; n; j++) {  // O(n)
+            // Some operation O(1)
+        }
+    }
+}
+            </pre>
+      <h3>Challenges in Learning:</h3>
+      <ul>
+        <li>Understanding mathematical notations like Big-O, Theta, and Omega.</li>
+        <li>Analyzing nested loops and recursion complexities.</li>
+      </ul>
+      <h3>Challenges in Real-World Applications:</h3>
+      <ul>
+        <li>Mapping theoretical complexities to practical scenarios.</li>
+        <li>Optimizing algorithms for real-world data constraints.</li>
+      </ul>
+      <h3>Efficiency Determination:</h3>
+      <p>Compare multiple algorithms based on their asymptotic complexities and practical performance on given data.</p>
+    </div>
+    <div class="section">
+      <h2>2. Binary Search Tree (BST)</h2>
+      <h3>Algorithm:</h3>
+      <pre>
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+    Node(int val) : data(val), left(nullptr), right(nullptr) {}
+};
 
-    <main>
-        <div class="section">
-            <h2>Key Concepts/Things I Learned</h2>
-            <ul>
-                <li>Time Complexity Analysis</li>
-                <li>Binary Search Tree</li>
-                <li>DFS and BFS</li>
-                <li>Heap</li>
-                <li>Sorting</li>
-                <li>Pattern Searching</li>
-                <li>Graph Algorithms</li>
-            </ul>
-        </div>
-
-        <div class="section">
-            <h2>1. Challenges in Learning/Understanding the Above Concepts</h2>
-            <ul>
-                <li><strong>Time Complexity Analysis:</strong> Requires a deep understanding of mathematical notations like Big-O, Theta, and Omega.</li>
-                
-                <li><strong>Binary Search Tree:</strong> Difficulty in understanding rotations during insertion and deletion operations.
-                    <pre>
 void insert(Node*& root, int value) {
-    if (root == nullptr) {
+    if (!root) {
         root = new Node(value);
         return;
     }
-    if (value < root->data) {
-        insert(root->left, value);
+    if (value &lt; root-&gt;data) {
+        insert(root-&gt;left, value);
     } else {
-        insert(root->right, value);
+        insert(root-&gt;right, value);
     }
-    root = balance(root); // Balances the tree (e.g., AVL tree rotations)
 }
-                    </pre>
-                </li>
-                
-                <li><strong>DFS and BFS:</strong> Requires grasping recursion for DFS and queue-based implementation for BFS.
-                    <pre>
-// DFS Implementation
-void DFS(Graph& g, int start, vector<bool>& visited) {
+            </pre>
+      <h3>Challenges in Learning:</h3>
+      <ul>
+        <li>Understanding rotations in AVL or Red-Black Trees.</li>
+        <li>Balancing trees for optimal performance.</li>
+      </ul>
+      <h3>Challenges in Real-World Applications:</h3>
+      <ul>
+        <li>Optimizing databases for fast search and retrieval.</li>
+        <li>Handling large datasets in balanced trees.</li>
+      </ul>
+      <h3>Efficiency Determination:</h3>
+      <p>Use balanced trees (AVL or Red-Black Trees) to ensure O(log n) complexity for search, insert, and delete operations.</p>
+    </div>
+    <div class="section">
+      <h2>3. DFS and BFS</h2>
+      <h3>DFS Algorithm:</h3>
+      <pre>
+void DFS(Graph& g, int start, vector& visited) {
     visited[start] = true;
-    cout << start << " ";
+    cout &lt;&lt; start &lt;&lt; " ";
     for (int neighbor : g[start]) {
         if (!visited[neighbor]) {
             DFS(g, neighbor, visited);
         }
     }
 }
-
-// BFS Implementation
+            </pre>
+      <h3>BFS Algorithm:</h3>
+      <pre>
 void BFS(Graph& g, int start) {
-    queue<int> q;
-    vector<bool> visited(g.size(), false);
+    queue q;
+    vector visited(g.size(), false);
     q.push(start);
     visited[start] = true;
 
     while (!q.empty()) {
         int node = q.front();
         q.pop();
-        cout << node << " ";
+        cout &lt;&lt; node &lt;&lt; " ";
         for (int neighbor : g[node]) {
             if (!visited[neighbor]) {
                 q.push(neighbor);
@@ -84,90 +113,295 @@ void BFS(Graph& g, int start) {
         }
     }
 }
-                    </pre>
-                </li>
-                
-                <li><strong>Heap:</strong> Understanding the heapify process and its application in priority queues.
-                    <pre>
-void heapify(vector<int>& heap, int n, int i) {
+            </pre>
+      <h3>Challenges in Learning:</h3>
+      <ul>
+        <li>DFS: Understanding recursion and its stack implications.</li>
+        <li>BFS: Implementing queue-based traversal efficiently.</li>
+      </ul>
+      <h3>Challenges in Real-World Applications:</h3>
+      <ul>
+        <li>DFS: Used in puzzle solving and connected component identification.</li>
+        <li>BFS: Used in shortest path problems in unweighted graphs.</li>
+      </ul>
+      <h3>Efficiency Determination:</h3>
+      <p>Choose DFS for exhaustive searches and BFS for level-order traversal or shortest path in unweighted graphs.</p>
+    </div>
+    <div class="section">
+      <h2>4. Heap</h2>
+      <h3>Algorithm:</h3>
+      <pre>
+void heapify(vector& heap, int n, int i) {
     int largest = i;
     int left = 2 * i + 1;
     int right = 2 * i + 2;
 
-    if (left < n && heap[left] > heap[largest])
-        largest = left;
-
-    if (right < n && heap[right] > heap[largest])
-        largest = right;
+    if (left &lt; n &amp;& heap[left] &gt; heap[largest]) largest = left;
+    if (right &lt; n &amp;& heap[right] &gt; heap[largest]) largest = right;
 
     if (largest != i) {
         swap(heap[i], heap[largest]);
         heapify(heap, n, largest);
     }
 }
-                    </pre>
-                </li>
-                
-                <li><strong>Sorting:</strong> Choosing between algorithms like QuickSort, MergeSort, or HeapSort for optimal performance.
-                    <pre>
-// QuickSort Implementation
-int partition(vector<int>& arr, int low, int high) {
-    int pivot = arr[high];
-    int i = low - 1;
 
-    for (int j = low; j < high; j++) {
-        if (arr[j] <= pivot) {
-            i++;
-            swap(arr[i], arr[j]);
-        }
-    }
-    swap(arr[i + 1], arr[high]);
-    return i + 1;
-}
-
-void quickSort(vector<int>& arr, int low, int high) {
-    if (low < high) {
-        int pi = partition(arr, low, high);
-        quickSort(arr, low, pi - 1);
-        quickSort(arr, pi + 1, high);
+void heapSort(vector& arr) {
+    int n = arr.size();
+    for (int i = n / 2 - 1; i &gt;= 0; i--) heapify(arr, n, i);
+    for (int i = n - 1; i &gt; 0; i--) {
+        swap(arr[0], arr[i]);
+        heapify(arr, i, 0);
     }
 }
-                    </pre>
-                </li>
-                
-                <li><strong>Pattern Searching:</strong> Challenges in implementing algorithms like KMP due to preprocessing requirements.
-                    <pre>
-// KMP Algorithm - Preprocessing
-void computeLPSArray(string pattern, int M, int* lps) {
-    int len = 0;
-    lps[0] = 0;
-    int i = 1;
-
-    while (i < M) {
-        if (pattern[i] == pattern[len]) {
-            len++;
-            lps[i] = len;
-            i++;
-        } else {
-            if (len != 0) {
-                len = lps[len - 1];
-            } else {
-                lps[i] = 0;
-                i++;
+            </pre>
+      <h3>Challenges in Learning:</h3>
+      <ul>
+        <li>Understanding heap properties and heapify process.</li>
+      </ul>
+      <h3>Challenges in Real-World Applications:</h3>
+      <ul>
+        <li>Applications in priority queues and job scheduling.</li>
+      </ul>
+      <h3>Efficiency Determination:</h3>
+      <p>Heap Sort provides O(n log n) complexity and is useful when space is limited.</p>
+    </div>
+    <div class="section">
+      <h2>5. Sorting Algorithms</h2>
+      <h3>a) Bubble Sort:</h3>
+      <pre>
+void bubbleSort(vector& arr) {
+    for (int i = 0; i &lt; arr.size() - 1; i++) {
+        for (int j = 0; j &lt; arr.size() - i - 1; j++) {
+            if (arr[j] &gt; arr[j + 1]) {
+                swap(arr[j], arr[j + 1]);
             }
         }
     }
 }
-                    </pre>
-                </li>
-                
-                <li><strong>Graph Algorithms:</strong> Modeling real-world problems and understanding shortest path or MST algorithms.
-                    <pre>
-// Dijkstra's Algorithm
-void dijkstra(vector<vector<pair<int, int>>>& graph, int src) {
-    priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
-    vector<int> dist(graph.size(), INT_MAX);
+            </pre>
+      <h3>Challenges in Learning:</h3>
+      <ul>
+        <li>Understanding inefficiencies in its nested loop structure.</li>
+      </ul>
+      <h3>Challenges in Real-World Applications:</h3>
+      <ul>
+        <li>Limited to small datasets or educational use.</li>
+      </ul>
+      <h3>Efficiency Determination:</h3>
+      <p>O(n²) complexity makes it unsuitable for large datasets.</p>
+      <h3>b) Selection Sort:</h3>
+      <pre>
+void selectionSort(vector& arr) {
+    for (int i = 0; i &lt; arr.size() - 1; i++) {
+        int minIdx = i;
+        for (int j = i + 1; j &lt; arr.size(); j++) {
+            if (arr[j] &lt; arr[minIdx]) {
+                minIdx = j;
+            }
+        }
+        swap(arr[minIdx], arr[i]);
+    }
+}
+            </pre>
+      <h3>Challenges in Learning:</h3>
+      <ul>
+        <li>Understanding its inefficiency on large datasets.</li>
+      </ul>
+      <h3>Challenges in Real-World Applications:</h3>
+      <ul>
+        <li>Rarely used outside of specific low-memory scenarios.</li>
+      </ul>
+      <h3>Efficiency Determination:</h3>
+      <p>Has O(n²) complexity, better suited for small datasets.</p>
+    </div>
+    <div class="section">
+      <h2>6. Search Algorithms</h2>
+      <h3>a) Brute Force:</h3>
+      <pre>
+void bruteForceSearch(string text, string pattern) {
+    for (int i = 0; i &lt;= text.size() - pattern.size(); i++) {
+        int j;
+        for (j = 0; j &lt; pattern.size(); j++) {
+            if (text[i + j] != pattern[j]) {
+                break;
+            }
+        }
+        if (j == pattern.size()) {
+            cout &lt;&lt; "Pattern found at index " &lt;&lt; i &lt;&lt; endl;
+        }
+    }
+}
+            </pre>
+      <h3>Challenges in Learning:</h3>
+      <ul>
+        <li>Simple implementation but computationally inefficient.</li>
+      </ul>
+      <h3>Challenges in Real-World Applications:</h3>
+      <ul>
+        <li>Inapplicable for large texts or patterns due to time inefficiency.</li>
+      </ul>
+      <h3>Efficiency Determination:</h3>
+      <p>Has O(m × n) complexity; other algorithms are preferred for efficiency.</p>
+      <h3>b) Boyer-Moore:</h3>
+      <pre>
+void boyerMooreSearch(string text, string pattern) {
+    vector badChar(256, -1);
+    for (int i = 0; i &lt; pattern.size(); i++) {
+        badChar[pattern[i]] = i;
+    }
 
+    int shift = 0;
+    while (shift &lt;= text.size() - pattern.size()) {
+        int j = pattern.size() - 1;
+        while (j &gt;= 0 &amp;& pattern[j] == text[shift + j]) {
+            j--;
+        }
+        if (j &lt; 0) {
+            cout &lt;&lt; "Pattern found at index " &lt;&lt; shift &lt;&lt; endl;
+            shift += (shift + pattern.size() &lt; text.size()) ? pattern.size() - badChar[text[shift + pattern.size()]] : 1;
+        } else {
+            shift += max(1, j - badChar[text[shift + j]]);
+        }
+    }
+}
+            </pre>
+      <h3>Challenges in Learning:</h3>
+      <ul>
+        <li>Requires understanding of bad character and good suffix rules.</li>
+      </ul>
+      <h3>Challenges in Real-World Applications:</h3>
+      <ul>
+        <li>Complex preprocessing but efficient for large patterns.</li>
+      </ul>
+      <h3>Efficiency Determination:</h3>
+      <p>Performs better with O(n/m) in best cases for large alphabets.</p>
+      <h3>c) Rabin-Karp:</h3>
+      <pre>
+void rabinKarpSearch(string text, string pattern, int prime) {
+    int hashPattern = 0, hashText = 0;
+    int h = 1, d = 256;
+
+    for (int i = 0; i &lt; pattern.size() - 1; i++) {
+        h = (h * d) % prime;
+    }
+
+    for (int i = 0; i &lt; pattern.size(); i++) {
+        hashPattern = (d * hashPattern + pattern[i]) % prime;
+        hashText = (d * hashText + text[i]) % prime;
+    }
+
+    for (int i = 0; i &lt;= text.size() - pattern.size(); i++) {
+        if (hashPattern == hashText) {
+            int j;
+            for (j = 0; j &lt; pattern.size(); j++) {
+                if (text[i + j] != pattern[j]) break;
+            }
+            if (j == pattern.size()) {
+                cout &lt;&lt; "Pattern found at index " &lt;&lt; i &lt;&lt; endl;
+            }
+        }
+        if (i &lt; text.size() - pattern.size()) {
+            hashText = (d * (hashText - text[i] * h) + text[i + pattern.size()]) % prime;
+            if (hashText &lt; 0) {
+                hashText += prime;
+            }
+        }
+    }
+}
+            </pre>
+      <h3>Challenges in Learning:</h3>
+      <ul>
+        <li>Hash collisions can be difficult to understand and mitigate.</li>
+      </ul>
+      <h3>Challenges in Real-World Applications:</h3>
+      <ul>
+        <li>Effective for small patterns but inefficient for high collision rates.</li>
+      </ul>
+      <h3>Efficiency Determination:</h3>
+      <p>Has O(m + n) complexity on average but degrades to O(m × n) with collisions.</p>
+      <h2>7. Graph Algorithms</h2>
+      <h3>1) Prim's Algorithm</h3>
+      <pre>
+void prims(vector&gt;&gt;& graph, int start) {
+    priority_queue, vector&gt;, greater&gt;&gt; pq;
+    vector visited(graph.size(), false);
+    pq.push({0, start});
+
+    while (!pq.empty()) {
+        auto [weight, node] = pq.top();
+        pq.pop();
+
+        if (!visited[node]) {
+            visited[node] = true;
+            for (auto& [neighbor, cost] : graph[node]) {
+                if (!visited[neighbor]) {
+                    pq.push({cost, neighbor});
+                }
+            }
+        }
+    }
+}
+            </pre>
+      <h3>Challenges in Learning:</h3>
+      <ul>
+        <li>Understanding the greedy methodology used in Prim's Algorithm.</li>
+        <li>Handling priority queues for selecting the minimum edge efficiently.</li>
+      </ul>
+      <h3>Challenges in Real-World Applications:</h3>
+      <ul>
+        <li>Used in network design for minimum spanning tree problems.</li>
+        <li>Requires optimization for dense graphs.</li>
+      </ul>
+      <h3>Efficiency Determination:</h3>
+      <p>Prim's Algorithm has a time complexity of O(E log V), making it efficient for sparse graphs.</p>
+      <h3>2) Kruskal's Algorithm</h3>
+      <pre>
+struct Edge {
+    int u, v, weight;
+};
+
+bool compare(Edge a, Edge b) {
+    return a.weight &lt; b.weight;
+}
+
+void kruskal(vector& edges, int V) {
+    sort(edges.begin(), edges.end(), compare);
+    vector parent(V);
+    iota(parent.begin(), parent.end(), 0);
+
+    function find = [&amp;](int u) {
+        return u == parent[u] ? u : parent[u] = find(parent[u]);
+    };
+
+    auto unite = [&amp;](int u, int v) {
+        parent[find(u)] = find(v);
+    };
+
+    for (Edge& edge : edges) {
+        if (find(edge.u) != find(edge.v)) {
+            cout &lt;&lt; "Edge: " &lt;&lt; edge.u &lt;&lt; " - " &lt;&lt; edge.v &lt;&lt; "\n";
+            unite(edge.u, edge.v);
+        }
+    }
+}
+            </pre>
+      <h3>Challenges in Learning:</h3>
+      <ul>
+        <li>Understanding union-find for detecting cycles efficiently.</li>
+        <li>Sorting edges by weight and ensuring graph connectivity.</li>
+      </ul>
+      <h3>Challenges in Real-World Applications:</h3>
+      <ul>
+        <li>Used in constructing efficient transportation networks.</li>
+        <li>Handling edge-heavy graphs can require significant computation.</li>
+      </ul>
+      <h3>Efficiency Determination:</h3>
+      <p>Kruskal's Algorithm has a time complexity of O(E log E) due to edge sorting, making it efficient for graphs with fewer vertices.</p>
+      <h3>3) Dijkstra's Algorithm</h3>
+      <pre>
+void dijkstra(vector&gt;&gt;& graph, int src) {
+    priority_queue, vector&gt;, greater&gt;&gt; pq;
+    vector dist(graph.size(), INT_MAX);
     pq.push({0, src});
     dist[src] = 0;
 
@@ -175,43 +409,93 @@ void dijkstra(vector<vector<pair<int, int>>>& graph, int src) {
         int u = pq.top().second;
         pq.pop();
 
-        for (auto& neighbor : graph[u]) {
-            int v = neighbor.first;
-            int weight = neighbor.second;
-
-            if (dist[u] + weight < dist[v]) {
+        for (auto& [v, weight] : graph[u]) {
+            if (dist[u] + weight &lt; dist[v]) {
                 dist[v] = dist[u] + weight;
                 pq.push({dist[v], v});
             }
         }
     }
 }
-                    </pre>
-                </li>
-            </ul>
-        </div>
+            </pre>
+      <h3>Challenges in Learning:</h3>
+      <ul>
+        <li>Understanding the priority queue for efficiently selecting the shortest path.</li>
+        <li>Handling graphs with negative weights, which are not supported by Dijkstra's.</li>
+      </ul>
+      <h3>Challenges in Real-World Applications:</h3>
+      <ul>
+        <li>Used in GPS systems for shortest path calculations.</li>
+        <li>Needs optimization for large-scale road networks.</li>
+      </ul>
+      <h3>Efficiency Determination:</h3>
+      <p>Dijkstra's Algorithm is efficient for graphs with non-negative weights and has a time complexity of O((V + E) log V).</p>
+      <h3>4) Bellman-Ford Algorithm</h3>
+      <pre>
+void bellmanFord(vector& edges, int V, int src) {
+    vector dist(V, INT_MAX);
+    dist[src] = 0;
 
-        <div class="section">
-            <h2>2. Challenges in Correlating with Real-World Applications</h2>
-            <ul>
-                <li><strong>Time Complexity Analysis:</strong> Applying theoretical efficiency to large-scale systems like web servers.</li>
-                <li><strong>Binary Search Tree:</strong> Optimizing database search operations using balanced trees like AVL or Red-Black Trees.</li>
-                <li><strong>DFS and BFS:</strong> Using these in navigation systems or solving puzzles like mazes.</li>
-                <li><strong>Heap:</strong> Applications in job scheduling or real-time priority management.</li>
-                <li><strong>Sorting:</strong> Efficiently handling data in e-commerce platforms or search engines.</li>
-                <li><strong>Pattern Searching:</strong> Real-world applications in text editors or DNA sequence analysis.</li>
-                <li><strong>Graph Algorithms:</strong> Applications in social networks, logistics, and communication networks.</li>
-            </ul>
-        </div>
+    for (int i = 0; i &lt; V - 1; i++) {
+        for (Edge& edge : edges) {
+            if (dist[edge.u] != INT_MAX &amp;& dist[edge.u] + edge.weight &lt; dist[edge.v]) {
+                dist[edge.v] = dist[edge.u] + edge.weight;
+            }
+        }
+    }
 
-        <div class="section">
-            <h2>3. Determining the Most Efficient Approach/Design Techniques</h2>
-            <p>Efficiency is determined by comparing multiple approaches and selecting one that minimizes time and space complexities while ensuring accuracy and scalability for the given problem.</p>
-        </div>
-    </main>
+    for (Edge& edge : edges) {
+        if (dist[edge.u] != INT_MAX &amp;& dist[edge.u] + edge.weight &lt; dist[edge.v]) {
+            cout &lt;&lt; "Graph contains a negative weight cycle.\n";
+            return;
+        }
+    }
+}
+            </pre>
+      <h3>Challenges in Learning:</h3>
+      <ul>
+        <li>Identifying and handling negative weight cycles effectively.</li>
+        <li>Understanding the relaxation process for edges.</li>
+      </ul>
+      <h3>Challenges in Real-World Applications:</h3>
+      <ul>
+        <li>Used in scenarios where negative weights exist, such as cost optimizations.</li>
+        <li>Inefficient for very large graphs due to O(VE) complexity.</li>
+      </ul>
+      <h3>Efficiency Determination:</h3>
+      <p>Bellman-Ford Algorithm is effective for small to medium-sized graphs and supports negative weights.</p>
+      <h3>5) Floyd-Warshall Algorithm</h3>
+      <pre>
+void floydWarshall(vector&gt;& graph) {
+    int V = graph.size();
 
-    <footer>
-        <p>Copyright © 2025 Stuthi Kiran - All Rights Reserved.</p>
-    </footer>
+    for (int k = 0; k &lt; V; k++) {
+        for (int i = 0; i &lt; V; i++) {
+            for (int j = 0; j &lt; V; j++) {
+                if (graph[i][k] != INT_MAX &amp;& graph[k][j] != INT_MAX) {
+                    graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j]);
+                }
+            }
+        }
+    }
+}
+            </pre>
+      <h3>Challenges in Learning:</h3>
+      <ul>
+        <li>Understanding the three nested loops and their purpose in the algorithm.</li>
+        <li>Handling memory and computation overhead for dense graphs.</li>
+      </ul>
+      <h3>Challenges in Real-World Applications:</h3>
+      <ul>
+        <li>Used in transportation and network routing for all-pairs shortest path calculations.</li>
+        <li>Requires significant computational resources for large graphs.</li>
+      </ul>
+      <h3>Efficiency Determination:</h3>
+      <p>Floyd-Warshall Algorithm is suitable for dense graphs with O(V^3) complexity.</p>
+    </div>
+  </main>
+  <footer>
+    <p>Copyright © 2025 Stuthi Kiran - All Rights Reserved.</p>
+  </footer>
 </body>
 </html>
