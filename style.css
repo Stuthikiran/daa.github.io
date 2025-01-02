@@ -8,16 +8,16 @@
 /* Body Styles */
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #f0f8ff; /* Light Blue */
-    color: #2f4f4f; /* Dark Slate Gray */
+    background-color: #013220; /* Dark Green */
+    color: #f8f8f8; /* Light Color for Text */
 }
 
 /* Header */
 header {
     text-align: center;
     padding: 50px 0;
-    background-color: #e0f7e9; /* Light Green */
-    color: #2e8b57; /* Sea Green */
+    background-color: #026e39; /* Slightly Lighter Green */
+    color: #ffffff; /* White */
 }
 
 header h1 {
@@ -48,7 +48,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: #2e8b57; /* Sea Green */
+    color: #f0f8ff; /* Light Blue */
     text-decoration: none;
     font-size: 1.2rem;
     font-weight: 600;
@@ -61,15 +61,18 @@ nav ul li a:hover {
 /* About Section */
 #about {
     padding: 40px 20px;
-    background-color: #f0f8ff; /* Light Blue */
+    background-color: #02472a; /* Darker Green for Contrast */
     text-align: center;
+    border-radius: 8px;
+    margin: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 #about h2 {
     font-size: 2rem;
     margin-bottom: 20px;
     font-weight: 600;
-    color: #2e8b57; /* Sea Green */
+    color: #f8f8f8; /* Light Color */
 }
 
 #about div p, #about ul {
@@ -84,29 +87,29 @@ ul {
 /* Projects Section */
 #projects {
     padding: 40px 20px;
-    background-color: #e0f7e9; /* Light Green */
+    background-color: #025e3c; /* Slightly Dark Green */
     text-align: center;
 }
 
 .project {
-    background-color: #ffffff;
+    background-color: #ffffff; /* White for Contrast */
     padding: 20px;
     border-radius: 8px;
     margin: 20px auto;
     max-width: 600px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 .project h3 {
     font-size: 1.5rem;
     margin-bottom: 10px;
-    color: #2e8b57; /* Sea Green */
+    color: #013220; /* Dark Green */
 }
 
 .project p {
     font-size: 1rem;
     margin-bottom: 10px;
-    color: #2f4f4f; /* Dark Slate Gray */
+    color: #333333; /* Dark Gray */
 }
 
 .project a {
@@ -125,8 +128,8 @@ ul {
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #e0f7e9; /* Light Green */
-    color: #2e8b57; /* Sea Green */
+    background-color: #025e3c; /* Slightly Dark Green */
+    color: #f8f8f8; /* Light Color */
 }
 
 footer ul {
@@ -139,7 +142,7 @@ footer ul li {
 }
 
 footer ul li a {
-    color: #2e8b57; /* Sea Green */
+    color: #f0f8ff; /* Light Blue */
     text-decoration: none;
 }
 
