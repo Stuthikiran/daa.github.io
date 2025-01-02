@@ -213,6 +213,111 @@ void selectionSort(vector& arr) {
       </ul>
       <h3>Efficiency Determination:</h3>
       <p>Has O(n²) complexity, better suited for small datasets.</p>
+
+      <h3>c) Insertion Sort:</h3>
+<pre>
+void insertionSort(vector<int>& arr) {
+    for (int i = 1; i < arr.size(); i++) {
+        int key = arr[i];
+        int j = i - 1;
+        // Move elements of arr[0..i-1] that are greater than key to one position ahead of their current position
+        while (j >= 0 && arr[j] > key) {
+            arr[j + 1] = arr[j];
+            j--;
+        }
+        arr[j + 1] = key;
+    }
+}
+</pre>
+<h3>Challenges in Learning:</h3>
+<ul>
+    <li>Understanding the process of shifting elements during insertion.</li>
+</ul>
+<h3>Challenges in Real-World Applications:</h3>
+<ul>
+    <li>Less efficient for large datasets due to O(n²) time complexity.</li>
+</ul>
+<h3>Efficiency Determination:</h3>
+<p>Efficient for small or partially sorted datasets due to its adaptive nature.</p>
+
+<h3>d) Merge Sort:</h3>
+<pre>
+void merge(vector<int>& arr, int left, int mid, int right) {
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    vector<int> L(n1), R(n2);
+    for (int i = 0; i < n1; i++) L[i] = arr[left + i];
+    for (int i = 0; i < n2; i++) R[i] = arr[mid + 1 + i];
+
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2) {
+        if (L[i] <= R[j]) {
+            arr[k++] = L[i++];
+        } else {
+            arr[k++] = R[j++];
+        }
+    }
+    while (i < n1) arr[k++] = L[i++];
+    while (j < n2) arr[k++] = R[j++];
+}
+
+void mergeSort(vector<int>& arr, int left, int right) {
+    if (left < right) {
+        int mid = left + (right - left) / 2;
+        mergeSort(arr, left, mid);
+        mergeSort(arr, mid + 1, right);
+        merge(arr, left, mid, right);
+    }
+}
+</pre>
+<h3>Challenges in Learning:</h3>
+<ul>
+    <li>Understanding the divide-and-conquer paradigm.</li>
+    <li>Managing auxiliary arrays and recursion.</li>
+</ul>
+<h3>Challenges in Real-World Applications:</h3>
+<ul>
+    <li>High memory usage due to temporary arrays.</li>
+</ul>
+<h3>Efficiency Determination:</h3>
+<p>Efficient for large datasets due to O(n log n) time complexity but requires additional space.</p>
+
+<h3>e) Quick Sort:</h3>
+<pre>
+int partition(vector<int>& arr, int low, int high) {
+    int pivot = arr[high];  // Pivot element
+    int i = low - 1;
+    for (int j = low; j < high; j++) {
+        if (arr[j] < pivot) {
+            i++;
+            swap(arr[i], arr[j]);
+        }
+    }
+    swap(arr[i + 1], arr[high]);
+    return i + 1;
+}
+
+void quickSort(vector<int>& arr, int low, int high) {
+    if (low < high) {
+        int pi = partition(arr, low, high);  // Partition index
+        quickSort(arr, low, pi - 1);         // Sort left of partition
+        quickSort(arr, pi + 1, high);        // Sort right of partition
+    }
+}
+</pre>
+<h3>Challenges in Learning:</h3>
+<ul>
+    <li>Understanding the partitioning process and recursion.</li>
+    <li>Choosing an optimal pivot for better performance.</li>
+</ul>
+<h3>Challenges in Real-World Applications:</h3>
+<ul>
+    <li>Performance can degrade to O(n²) with poorly chosen pivots.</li>
+</ul>
+<h3>Efficiency Determination:</h3>
+<p>Quick Sort is efficient for most datasets due to its average time complexity of O(n log n) and in-place sorting.</p>
+
     </div>
     <div class="section">
       <h2>6. Search Algorithms</h2>
